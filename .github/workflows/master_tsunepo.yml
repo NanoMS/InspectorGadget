@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -19,7 +18,7 @@ jobs:
     - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.301'
+        dotnet-version: '3.1.102'
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
@@ -32,5 +31,5 @@ jobs:
       with:
         app-name: 'tsunepo'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_578e89d3ec824576950b67dd24225879 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cfd378f29e114066be2470603cfc6dcb }}
         package: ${{env.DOTNET_ROOT}}/myapp 
